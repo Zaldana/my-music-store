@@ -1,11 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
 
 const shoppingCartInitialState = [];
-
 export const addItemToCartAction = 'addItemToCart';
-
 export const removeItemFromCartAction = 'removeItemFromCart';
-
 export const emptyCartAction = 'emptyCart';
 
 const shoppingCartReducer = (state = shoppingCartInitialState, action) => {
@@ -44,9 +41,26 @@ const shoppingCartReducer = (state = shoppingCartInitialState, action) => {
   return state;
 };
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const initialUserState = {}
+export const signIn = 'signIn';
+
+const signInReducer = (state = initialUserState, action) => {
+
+  if (action.type === signIn) {
+    return action.user
+  }
+
+  return state;
+};
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 const store = configureStore({
   reducer: {
-    shoppingCart:  shoppingCartReducer,
+    shoppingCart: shoppingCartReducer,
+    signIn: signInReducer
   },
 })
 
